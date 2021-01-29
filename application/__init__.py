@@ -10,3 +10,4 @@ CORS(app)
 api = Api(app)
 
 from application.routes import image_return
+from application.routes import home

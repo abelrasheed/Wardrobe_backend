@@ -44,8 +44,11 @@ class image_return(Resource):
         return response
 
 
-
+class home(Resource):
+    def get(self):
+        return "Home"
 
 api.add_resource(image_return, "/image")
+api.add_resource(home, "/")
 
 
