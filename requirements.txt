@@ -8,7 +8,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 numpy==1.19.5
-opencv-python==4.5.1.48
+opencv-python-headless==4.2.0.32
 Pillow==8.1.0
 pytz==2020.5
 six==1.15.0
