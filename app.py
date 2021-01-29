@@ -47,7 +47,7 @@ class image_return(Resource):
 
 
 class home(Resource):
-    def get(self, thing):
+    def get(self):
         test_return = {"Home" : "Homes"}
         
         return test_return
