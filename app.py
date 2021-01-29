@@ -6,6 +6,7 @@ from flask import request,send_file,make_response,request,Flask,jsonify
 from flask_restful import Resource
 import numpy as np
 from conversion import conversion
+from base64 import encodebytes
 
 app = Flask(__name__)
 
@@ -31,22 +32,20 @@ class image_return(Resource):
         img_byte_arr = io.BytesIO()
         img_res.save(img_byte_arr, format='png')
 
-        img_byte_arr = img_byte_arr.getvalue()
+        encoded_img =  encodebytes(img_byte_arr.getvalue()).decode('ascii')
         # return send_file(
         #     img_byte_arr,
         #     mimetype='image/jpeg',
         #     as_attachment = True,
         #     attachment_filename='image.jpg'
         # )
-        response = make_response(img_byte_arr)
-        response.headers.set('Content-type','image/png')
-        response.headers.set(
-            'Content-Disposition','attachment',filename='image.png'
-        )
-        img_json_return = {
-            "image" : response
-        }
-        return jsonify(img_json_return)
+        # response = make_response(img_byte_arr)
+        # response.headers.set('Content-type','image/png')
+        # response.headers.set(
+        #     'Content-Disposition','attachment',filename='image.png'
+        # )
+        response =  { 'Status' : 'Success', 'message': "Ithenkilum nadakkuvo" , 'ImageBytes': encoded_img}
+        return jsonify(response)
 
 
 class home(Resource):
