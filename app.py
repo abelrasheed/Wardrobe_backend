@@ -43,14 +43,17 @@ class image_return(Resource):
         response.headers.set(
             'Content-Disposition','attachment',filename='image.png'
         )
-        return response
+        img_json_return = {
+            "image" : response
+        }
+        return jsonify(img_json_return)
 
 
 class home(Resource):
     def get(self):
         test_return = {"Home" : "Homes"}
         
-        return jsonify(test_return)
+        return "varunnundo kopile saanam ?"
 
 api.add_resource(image_return, "/image")
 api.add_resource(home, "/")
