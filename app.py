@@ -2,7 +2,7 @@ from flask_cors import CORS
 from flask_restful import Api
 from PIL import Image,ImageOps
 import io
-from flask import request,send_file,make_response,request,Flask
+from flask import request,send_file,make_response,request,Flask,jsonify
 from flask_restful import Resource
 import numpy as np
 from conversion import conversion
@@ -48,7 +48,9 @@ class image_return(Resource):
 
 class home(Resource):
     def get(self):
-        return {"Home" : "Homes"}
+        test_return = {"Home" : "Homes"}
+        
+        return jsonify(test_return)
 
 api.add_resource(image_return, "/image")
 api.add_resource(home, "/")
