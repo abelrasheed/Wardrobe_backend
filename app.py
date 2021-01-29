@@ -15,9 +15,10 @@ CORS(app)
 api = Api(app)
 
 class image_return(Resource):
-    def get(self):
+    def post(self):
         
-        pic_loc = "https://raw.githubusercontent.com/aldrinjenson/wardrobe-ar/master/assets/normal.jpeg"
+        pic_loc = request.json['url']
+        # pic_loc = "https://raw.githubusercontent.com/aldrinjenson/wardrobe-ar/master/assets/normal.jpeg"
         img_rgb = Image.open(requests.get(pic_loc, stream=True).raw)
         img_grey = ImageOps.grayscale(img_rgb)
 
@@ -49,10 +50,10 @@ class home(Resource):
     def get(self, thing):
         test_return = {"Home" : "Homes"}
         
-        return thing
+        return test_return
 
 api.add_resource(image_return, "/image")
-api.add_resource(home, "/<string:thing>")
+api.add_resource(home, "/")
 
 
 
