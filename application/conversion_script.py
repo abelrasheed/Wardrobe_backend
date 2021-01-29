@@ -1,6 +1,4 @@
-import tensorflow as tf
- 
-# Helper libraries
+ # Helper libraries
 import cv2
 import numpy as np
 
