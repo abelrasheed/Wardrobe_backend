@@ -7,6 +7,7 @@ from flask_restful import Resource
 import numpy as np
 from conversion import conversion
 from base64 import encodebytes
+import requests
 
 app = Flask(__name__)
 
@@ -15,13 +16,13 @@ api = Api(app)
 
 class image_return(Resource):
     def post(self):
-        pic = request.files['pic']
+        pic_loc = request.form['pic_loc']
 
-        if not pic :
+        if not pic_loc :
             return "No image uploaded",400
-
         
-        img_rgb = Image.open(pic)
+        
+        img_rgb = Image.open(requests.get(pic_loc, stream=True).raw)
         img_grey = ImageOps.grayscale(img_rgb)
 
         img_rbg = np.array(img_rgb)
