@@ -1,14 +1,16 @@
+from flask_cors import CORS
+from flask_restful import Api
 from PIL import Image,ImageOps
-import numpy
 import io
-from flask import request,send_file,make_response,request
+from flask import request,send_file,make_response,request,Flask
 from flask_restful import Resource
-
-from application import api
 import numpy as np
-from application.conversion import conversion
+from conversion import conversion
 
+app = Flask(__name__)
 
+CORS(app)
+api = Api(app)
 
 class image_return(Resource):
     def post(self):
@@ -52,3 +54,11 @@ api.add_resource(image_return, "/image")
 api.add_resource(home, "/")
 
 
+
+
+
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

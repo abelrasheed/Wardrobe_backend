@@ -1,8 +1,8 @@
 import cv2
 from PIL import Image,ImageOps
 import numpy as np
-from application.cartoonize import cartoonize
-from application.conversion_script import conversion_script
+from cartoonize import cartoonize
+from conversion_script import conversion_script
 
 
 # img_rgb = Image.open("D:\Source codes\AR wardrobe\AR-Backend\conversion\download.jpg")
